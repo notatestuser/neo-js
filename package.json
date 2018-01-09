@@ -5,7 +5,7 @@
   "description": "A package for running a node on the neo blockchain.",
   "main": "dist/node.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./{dist,examples,test} --ext .js",
+    "lint": "./node_modules/.bin/concurrently \"npm-run eslint ./{dist,examples,test} --ext .js\" \"npm-run flow-jsdoc -d ./dist -o ./dist_flow && npm-run flow check && rm -rf ./dist_flow && npm-run rimraf ./dist_flow\"",
     "integration": "./node_modules/.bin/mocha -b ./test/integration/**/*.js",
     "test": "./node_modules/.bin/mocha -b ./test/unit/**/*.js",
     "coverage": "./node_modules/.bin/nyc npm test",
@@ -38,16 +38,22 @@
   "devDependencies": {
     "axios-mock-adapter": "^1.9.0",
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "documentation": "^5.3.5",
     "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-flow": "^1.0.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.63.1",
+    "flow-jsdoc": "^0.3.1",
     "husky": "^0.14.3",
     "mocha": "^3.5.3",
+    "npm-run": "^4.1.2",
     "nyc": "^11.2.1",
+    "rimraf": "^2.6.2",
     "sinon": "^4.1.3"
   }
 }

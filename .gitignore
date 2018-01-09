@@ -1,3 +1,4 @@
+dist_flow
 node_modules
 package-lock.json
 .nyc_output
